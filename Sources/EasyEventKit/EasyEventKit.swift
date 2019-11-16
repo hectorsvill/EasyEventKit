@@ -43,7 +43,7 @@ class EventKitController {
         let newCalendar = EKCalendar(for: .event, eventStore: eventStore)
         newCalendar.title = title
         newCalendar.source = eventStore.sources.filter { $0.sourceType.rawValue == sourceType.rawValue}.first!
-        newCalendar.color = .black
+//        newCalendar.color = .black
         
         do {
             try eventStore.saveCalendar(newCalendar, commit: true)
@@ -53,21 +53,21 @@ class EventKitController {
     }
     
     /// insert event to  calendar
-    func insertEvent(with calendar: EKCalendar, atrack: ATrack) {
-        let event = EKEvent(eventStore: eventStore)
-        event.calendar = calendar
-        event.title = atrack.title
-        event.notes = atrack.summary
-        event.url = nil
-        event.startDate = atrack.start
-        event.endDate = atrack.end
-                
-        do {
-            try eventStore.save(event, span: .thisEvent)
-        } catch {
-            NSLog("Error with event: \(error)")
-        }
-    }
+//    func insertEvent(with calendar: EKCalendar, atrack: ATrack) {
+//        let event = EKEvent(eventStore: eventStore)
+//        event.calendar = calendar
+//        event.title = atrack.title
+//        event.notes = atrack.summary
+//        event.url = nil
+//        event.startDate = atrack.start
+//        event.endDate = atrack.end
+//
+//        do {
+//            try eventStore.save(event, span: .thisEvent)
+//        } catch {
+//            NSLog("Error with event: \(error)")
+//        }
+//    }
     
     /// insert  EKEvent
     func insertEvent(with event: EKEvent, completion: @escaping (Error?) -> ()) {
