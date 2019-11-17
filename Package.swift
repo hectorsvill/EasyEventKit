@@ -5,14 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "EasyEventKit",
-//    platforms: [
-//        .ios(103)
-//    ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "EasyEventKit",
             targets: ["EasyEventKit"]),
+        
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.

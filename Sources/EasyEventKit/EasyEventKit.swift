@@ -1,8 +1,8 @@
 import EventKit
 
-class EventKitController {
+open class EventKitController {
     private (set) var eventStore: EKEventStore
-    
+        
     /// returns event calendars array
     var eventCalendars: [EKCalendar] {
         eventStore.calendars(for: .event)
@@ -37,14 +37,14 @@ class EventKitController {
     }
 
     /// create new event calendar inside icloud default, if exist do nothing
-    func createNewCalendar(with title: String, using sourceType: EKSourceType = EKSourceType.calDAV) {
+    func createNewCalendar(with title: String, using sourceType: EKSourceType = EKSourceType.local) {
         guard !calendarExist(with: title) else { return}
 
         let newCalendar = EKCalendar(for: .event, eventStore: eventStore)
         newCalendar.title = title
-        newCalendar.source = eventStore.sources.filter { $0.sourceType.rawValue == sourceType.rawValue}.first!
-//        newCalendar.color = .black
-        
+        if !eventStore.sources.isEmpty {
+            newCalendar.source = eventStore.sources.filter { $0.sourceType.rawValue == sourceType.rawValue}.first!
+        }
         do {
             try eventStore.saveCalendar(newCalendar, commit: true)
         } catch {
