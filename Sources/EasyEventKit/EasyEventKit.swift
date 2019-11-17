@@ -1,7 +1,7 @@
 import EventKit
 
 open class EventKitController {
-    private (set) var eventStore: EKEventStore
+    open private (set) var eventStore: EKEventStore
         
     /// returns event calendars array
     open var eventCalendars: [EKCalendar] {
