@@ -2,7 +2,7 @@
 #
 #### Requirements:
 
-##### iOS
+##### iOS & macOS
     The app's Info.plist must contain an 
         - NSCalendarsUsageDescription key with a string value explaining to the user how the app uses this data.
         - NSRemindersUsageDescription Key with a string value explaining to the user how the app uses this data. 

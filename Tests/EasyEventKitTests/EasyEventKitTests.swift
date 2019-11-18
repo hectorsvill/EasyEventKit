@@ -17,8 +17,6 @@ final class EasyEventKitTests: XCTestCase {
         return Date()
     }
     
-
-    
     func testCreateCalendar() {
         eventKitController.permission()
        eventKitController.createNewCalendar(with: calendarTitle, using: .local)

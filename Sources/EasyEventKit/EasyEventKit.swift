@@ -42,9 +42,11 @@ open class EventKitController {
 
         let newCalendar = EKCalendar(for: .event, eventStore: eventStore)
         newCalendar.title = title
-        if !eventStore.sources.isEmpty {
-            newCalendar.source = eventStore.sources.filter { $0.sourceType.rawValue == sourceType.rawValue}.first!
-        }
+        
+        newCalendar.source = eventStore.sources.filter { $0.sourceType.rawValue == sourceType.rawValue}.first!
+//        if !eventStore.sources.isEmpty {
+//            newCalendar.source = eventStore.sources.filter { $0.sourceType.rawValue == sourceType.rawValue}.first!
+//        }
         do {
             try eventStore.saveCalendar(newCalendar, commit: true)
         } catch {
