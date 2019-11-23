@@ -1,13 +1,13 @@
-import EventKit
-import XCTest
 
+import XCTest
+import EventKit
 @testable import EasyEventKit
 
 final class EasyEventKitTests: XCTestCase {
     let eventKitController = EventKitController()
-    let calendarTitle = "Test this Calendar"
+    let calendarTitle = "Test this Calendar 0000"
     
-       // start date
+    // start date
     var start: Date {
         return Date(timeIntervalSinceNow: -10800)
     }
@@ -19,9 +19,10 @@ final class EasyEventKitTests: XCTestCase {
     
     func testCreateCalendar() {
         eventKitController.permission()
-       eventKitController.createNewCalendar(with: calendarTitle, using: .local)
-       let calendarTitles = eventKitController.eventCalendars.map { $0.title }
-       XCTAssertTrue(calendarTitles.contains(calendarTitle))
+        eventKitController.permission()
+        eventKitController.createNewCalendar(with: calendarTitle, using: .local)
+        let calendarTitles = eventKitController.eventCalendars.map { $0.title }
+        XCTAssertTrue(calendarTitles.contains(calendarTitle))
    }
 
    func testFetchCalendar() {
@@ -59,8 +60,8 @@ final class EasyEventKitTests: XCTestCase {
 
     static var allTests = [
         ["testCreateCalendar", testCreateCalendar],
-        ["testFetchCalendar", testFetchCalendar],
-        ["testInsertEvent", testInsertEvent],
-        ["testFetchEvents", testFetchEvents]
+//        ["testFetchCalendar", testFetchCalendar],
+//        ["testInsertEvent", testInsertEvent],
+//        ["testFetchEvents", testFetchEvents]
     ]
 }

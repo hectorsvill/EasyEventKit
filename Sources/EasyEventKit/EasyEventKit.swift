@@ -3,7 +3,13 @@ import EventKit
 
 open class EventKitController {
     open var eventStore: EKEventStore
-        
+    
+    public init(eventStore: EKEventStore = EKEventStore()) {
+        self.eventStore = eventStore
+    }
+    
+    
+    
     /// returns event calendars array
     open var eventCalendars: [EKCalendar] {
         eventStore.calendars(for: .event)
@@ -14,9 +20,7 @@ open class EventKitController {
         eventStore.calendars(for: .reminder)
     }
     
-    public init(eventStore: EKEventStore) {
-        self.eventStore = eventStore
-    }
+   
     
     /// returns true if calendar with title exitst
     open func calendarExist(with title: String) -> Bool {
@@ -43,11 +47,9 @@ open class EventKitController {
 
         let newCalendar = EKCalendar(for: .event, eventStore: eventStore)
         newCalendar.title = title
-        
         newCalendar.source = eventStore.sources.filter { $0.sourceType.rawValue == sourceType.rawValue}.first!
-//        if !eventStore.sources.isEmpty {
-//            newCalendar.source = eventStore.sources.filter { $0.sourceType.rawValue == sourceType.rawValue}.first!
-//        }
+        newCalendar.source = EKSource()
+
         do {
             try eventStore.saveCalendar(newCalendar, commit: true)
         } catch {
