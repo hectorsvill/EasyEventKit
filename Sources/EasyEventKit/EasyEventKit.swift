@@ -1,5 +1,6 @@
 import EventKit
 
+
 open class EventKitController {
     open var eventStore: EKEventStore
         
@@ -13,7 +14,7 @@ open class EventKitController {
         eventStore.calendars(for: .reminder)
     }
     
-    public init(eventStore: EKEventStore = EKEventStore()) {
+    public init(eventStore: EKEventStore) {
         self.eventStore = eventStore
     }
     
